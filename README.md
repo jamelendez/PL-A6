@@ -1,4 +1,4 @@
-# PL-A6
+# PL-A6 - PONEL
 Asignación 6 del curso ICOM-4036. 
 
 Jose A. Melendez Morales & Jose A. Santiago 
