@@ -1,7 +1,7 @@
 import ply.yacc as yacc
-import CommLangServer
-import CommLangClient
-import CommLangLexer
+import PONELServer
+import PONELClient
+import PONELLexer
 import socket
 
 tokens = PONELLexer.tokens
@@ -16,8 +16,8 @@ address = ('', 0)
 # Parsing Rules
 def p_statement(p):
     """
-    statement : create_Client
-            | create_Server
+    statement : create_client
+            | create_server
             | connect
             | receive
             | send
@@ -38,58 +38,58 @@ def p_error(p):
 
 
 def p_create_Client(p):
-    'create_Client : CREATE_CLIENT'
-    CommLangClient.create_server()
+    'create_client : CREATE_CLIENT'
+    PONELClient.create_server()
 
 
 def p_create_Server(p):
-    'create_Server : CREATE_SERVER'
-    CommLangServer.create_client()
+    'create_server : CREATE_SERVER'
+    PONELServer.create_client()
 
 
 def p_connect(p):
     'connect : CONNECT'
-    CommLangClient.connect(client_socket)
+    PONELClient.connect(client_socket)
 
 
 def p_receive(p):
     'receive : RECEIVE'
-    CommLangClient.receive(client_socket)
+    PONELClient.receive(client_socket)
 
 
 def p_send(p):
     'send : SEND'
-    CommLangServer.send(conn)
+    PONELServer.send(conn)
 
 
 def p_close_client(p):
     'close_client : CLIENT_CLOSE'
-    CommLangClient.close(client_socket)
+    PONELClient.close(client_socket)
 
 
 def p_bind(p):
     'bind : BIND'
-    CommLangServer.bind(server_socket)
+    PONELServer.bind(server_socket)
 
 
 def p_listen(p):
     'listen : LISTEN'
-    CommLangServer.listen(server_socket)
+    PONELServer.listen(server_socket)
 
 
 def p_accept(p):
     'accept : ACCEPT'
-    return CommLangServer.accept(server_socket)
+    return PONELServer.accept(server_socket)
 
 
 def p_close_server(p):
     'close_server : SERVER_CLOSE'
-    CommLangServer.close(server_socket)
+    PONELServer.close(server_socket)
 
 
 yacc.yacc()
 while True:
-    s = input('CommLang > ')
+    s = input('PONEL >> ')
     if s == 'create_Client':
         p_create_Client(client_socket)
     elif s == 'create_Server':
