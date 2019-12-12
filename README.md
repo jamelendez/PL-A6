@@ -6,7 +6,7 @@ PONEL is a language that simplifies the communication from client-to-server from
 
 Usage:
 
-Run PONEL.py in terminal (python3 PONEL.py) or in your preferred IDE (IntelliJ, Eclipse, PyCharm,etc)
+Run ponel.py in terminal (python3 ponel.py) or in your preferred IDE (IntelliJ, Eclipse, PyCharm,etc)
 Run the listed commands below
 The commands are:
 
